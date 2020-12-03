@@ -30,7 +30,7 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                 ]),
             child: Column(
               children: [
-                Text("销售额"),
+                Text("本周销售额"),
                 BarChart(
                   BarChartData(
                     alignment: BarChartAlignment.center,
@@ -42,33 +42,6 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                     ),
                     titlesData: FlTitlesData(
                       show: true,
-                      // topTitles: SideTitles(
-                      //   showTitles: true,
-                      //   textStyle:
-                      //       const TextStyle(color: Colors.black, fontSize: 10),
-                      //   margin: 10,
-                      //   rotateAngle: 0,
-                      //   getTitles: (double value) {
-                      //     switch (value.toInt()) {
-                      //       case 0:
-                      //         return 'Mon';
-                      //       case 1:
-                      //         return 'Tue';
-                      //       case 2:
-                      //         return 'Wed';
-                      //       case 3:
-                      //         return 'Thu';
-                      //       case 4:
-                      //         return 'Fri';
-                      //       case 5:
-                      //         return 'Sat';
-                      //       case 6:
-                      //         return 'Sun';
-                      //       default:
-                      //         return '';
-                      //     }
-                      //   },
-                      // ),
                       bottomTitles: SideTitles(
                         showTitles: true,
                         textStyle:
@@ -78,19 +51,19 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                         getTitles: (double value) {
                           switch (value.toInt()) {
                             case 0:
-                              return 'Mon';
+                              return '一';
                             case 1:
-                              return 'Tue';
+                              return '二';
                             case 2:
-                              return 'Wed';
+                              return '三';
                             case 3:
-                              return 'Thu';
+                              return '四';
                             case 4:
-                              return 'Fri';
+                              return '五';
                             case 5:
-                              return 'Sat';
+                              return '六';
                             case 6:
-                              return 'Sun';
+                              return '日';
                             default:
                               return '';
                           }
@@ -105,7 +78,7 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                           if (value == 0) {
                             return '0';
                           }
-                          return '${value.toInt()}0k';
+                          return '${value.toInt()}';
                         },
                         interval: 5,
                         margin: 8,
@@ -120,7 +93,7 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                           if (value == 0) {
                             return '0';
                           }
-                          return '${value.toInt()}0k';
+                          return '${value.toInt()}';
                         },
                         interval: 5,
                         margin: 8,
@@ -167,28 +140,6 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                           ),
                         ],
                       ),
-                      // BarChartGroupData(
-                      //   x: 1,
-                      //   barRods: [
-                      //     BarChartRodData(
-                      //       y: -14,
-                      //       width: barWidth,
-                      //       borderRadius: const BorderRadius.only(
-                      //           bottomLeft: Radius.circular(6),
-                      //           bottomRight: Radius.circular(6)),
-                      //       rodStackItems: [
-                      //         BarChartRodStackItem(
-                      //             0, -1.8, const Color(0xff2bdb90)),
-                      //         BarChartRodStackItem(
-                      //             -1.8, -4.5, const Color(0xffffdd80)),
-                      //         BarChartRodStackItem(
-                      //             -4.5, -7.5, const Color(0xffff4d94)),
-                      //         BarChartRodStackItem(
-                      //             -7.5, -14, const Color(0xff19bfff)),
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
                       BarChartGroupData(
                         x: 2,
                         barRods: [
@@ -233,50 +184,50 @@ class _SaleChartsState extends State<SalesChartsWidget> {
                           ),
                         ],
                       ),
-                      // BarChartGroupData(
-                      //   x: 4,
-                      //   barRods: [
-                      //     BarChartRodData(
-                      //       y: -18,
-                      //       width: barWidth,
-                      //       borderRadius: const BorderRadius.only(
-                      //           bottomLeft: Radius.circular(6),
-                      //           bottomRight: Radius.circular(6)),
-                      //       rodStackItems: [
-                      //         BarChartRodStackItem(
-                      //             0, -2, const Color(0xff2bdb90)),
-                      //         BarChartRodStackItem(
-                      //             -2, -4, const Color(0xffffdd80)),
-                      //         BarChartRodStackItem(
-                      //             -4, -9, const Color(0xffff4d94)),
-                      //         BarChartRodStackItem(
-                      //             -9, -18, const Color(0xff19bfff)),
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
-                      // BarChartGroupData(
-                      //   x: 5,
-                      //   barRods: [
-                      //     BarChartRodData(
-                      //       y: -17,
-                      //       width: barWidth,
-                      //       borderRadius: const BorderRadius.only(
-                      //           bottomLeft: Radius.circular(6),
-                      //           bottomRight: Radius.circular(6)),
-                      //       rodStackItems: [
-                      //         BarChartRodStackItem(
-                      //             0, -1.2, const Color(0xff2bdb90)),
-                      //         BarChartRodStackItem(
-                      //             -1.2, -2.7, const Color(0xffffdd80)),
-                      //         BarChartRodStackItem(
-                      //             -2.7, -7, const Color(0xffff4d94)),
-                      //         BarChartRodStackItem(
-                      //             -7, -17, const Color(0xff19bfff)),
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
+                      BarChartGroupData(
+                        x: 4,
+                        barRods: [
+                          BarChartRodData(
+                            y: 18,
+                            width: barWidth,
+                            borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(6),
+                                bottomRight: Radius.circular(6)),
+                            rodStackItems: [
+                              BarChartRodStackItem(
+                                  0, -2, const Color(0xff2bdb90)),
+                              BarChartRodStackItem(
+                                  -2, -4, const Color(0xffffdd80)),
+                              BarChartRodStackItem(
+                                  -4, -9, const Color(0xffff4d94)),
+                              BarChartRodStackItem(
+                                  -9, -18, const Color(0xff19bfff)),
+                            ],
+                          ),
+                        ],
+                      ),
+                      BarChartGroupData(
+                        x: 5,
+                        barRods: [
+                          BarChartRodData(
+                            y: 17,
+                            width: barWidth,
+                            borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(6),
+                                bottomRight: Radius.circular(6)),
+                            rodStackItems: [
+                              BarChartRodStackItem(
+                                  0, -1.2, const Color(0xff2bdb90)),
+                              BarChartRodStackItem(
+                                  -1.2, -2.7, const Color(0xffffdd80)),
+                              BarChartRodStackItem(
+                                  -2.7, -7, const Color(0xffff4d94)),
+                              BarChartRodStackItem(
+                                  -7, -17, const Color(0xff19bfff)),
+                            ],
+                          ),
+                        ],
+                      ),
                       BarChartGroupData(
                         x: 6,
                         barRods: [

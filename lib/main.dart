@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ming_dash/cost/costFormWidget.dart';
 import 'home/salesStatsWidget.dart';
 import 'home/salesChartsWidget.dart';
+import 'cost/costStatsWidget.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,13 +30,13 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: '数据'),
+      home: Main(title: 'Ming\'s Kitchen'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class Main extends StatefulWidget {
+  Main({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -48,11 +50,29 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainState createState() => _MainState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainState extends State<Main> {
   int _selectedIndex = 0;
+  static List<dynamic> _pages = <dynamic>[
+    [
+      SalesStatsWidget(
+        data: {'todaySale': 3},
+      ),
+      SalesChartsWidget(data: [
+        {'month': 1, 'uber': 1600.8, 'total_amount': 16206.2500000001},
+        {'month': 2, 'uber': 1394.43, 'total_amount': 15111.8200000001},
+        {'month': 3, 'uber': 448.76, 'total_amount': 5130.43},
+        {'month': 5, 'uber': 5493.07, 'total_amount': 19304.08},
+        {'month': 6, 'uber': 1220.93, 'total_amount': 5940.84}
+      ]),
+    ],
+    [
+      CostStatsWidget(data: {'todaySale': 5}),
+      CostFormWidget()
+    ],
+  ];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -75,48 +95,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SalesStatsWidget(
-              data: {'todaySale': 3},
-            ),
-            SalesChartsWidget(data: [
-              {'month': 1, 'uber': 1600.8, 'total_amount': 16206.2500000001},
-              {'month': 2, 'uber': 1394.43, 'total_amount': 15111.8200000001},
-              {'month': 3, 'uber': 448.76, 'total_amount': 5130.43},
-              {'month': 5, 'uber': 5493.07, 'total_amount': 19304.08},
-              {'month': 6, 'uber': 1220.93, 'total_amount': 5940.84}
-            ]),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headline4,
-            // ),
-          ],
-        ),
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _pages.elementAt(_selectedIndex)),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.trending_up),
             label: '统计',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: '支出',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.store),
+            label: 'Uber',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

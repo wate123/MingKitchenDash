@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SalesStatsWidget extends StatefulWidget {
-  SalesStatsWidget({Key key, this.data}) : super(key: key);
+class CostStatsWidget extends StatefulWidget {
+  CostStatsWidget({Key key, this.data}) : super(key: key);
 
   final Map<String, double> data;
   @override
-  _SaleStatState createState() => _SaleStatState();
+  _CostStatState createState() => _CostStatState();
 }
 
-class _SaleStatState extends State<SalesStatsWidget> {
+class _CostStatState extends State<CostStatsWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +28,7 @@ class _SaleStatState extends State<SalesStatsWidget> {
         child: Stack(
           children: [
             Text(
-              '日销售额',
+              '月支出',
               style:
                   TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.8)),
             ),
@@ -48,7 +48,7 @@ class _SaleStatState extends State<SalesStatsWidget> {
                     child: RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: '比昨日收入',
+                            text: '比上月支出',
                             style: new TextStyle(
                               // fontSize: 14.0,
                               color: Colors.black,
@@ -57,7 +57,7 @@ class _SaleStatState extends State<SalesStatsWidget> {
                             child: Icon(
                           Icons.arrow_upward,
                           size: 40,
-                          color: Colors.green,
+                          color: Colors.red,
                         )),
                       ]),
                     ),
@@ -67,7 +67,7 @@ class _SaleStatState extends State<SalesStatsWidget> {
                     child: RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: '比去年今日',
+                            text: '比去年本月',
                             style: new TextStyle(
                               // fontSize: 14.0,
                               color: Colors.black,
@@ -76,7 +76,7 @@ class _SaleStatState extends State<SalesStatsWidget> {
                             child: Icon(
                           Icons.arrow_upward,
                           size: 40,
-                          color: Colors.green,
+                          color: Colors.red,
                         )),
                       ]),
                     ),
@@ -85,21 +85,10 @@ class _SaleStatState extends State<SalesStatsWidget> {
                     alignment: Alignment.bottomLeft,
                     child: RichText(
                       text: TextSpan(
-                          text: '今年总销售额 \$61,693',
+                          text: '今年总支出 \$61,693',
                           style: new TextStyle(
                             // fontSize: 14.0,
                             color: Colors.black,
-                          )),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: RichText(
-                      text: TextSpan(
-                          text: '净利润 \$61,693',
-                          style: new TextStyle(
-                            // fontSize: 14.0,
-                            color: Colors.green,
                           )),
                     ),
                   ),
