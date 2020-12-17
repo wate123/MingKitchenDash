@@ -2,6 +2,7 @@
 
 A new Flutter project.
 
+[Prototype](https://www.figma.com/proto/1icMeG8q4iWH5aGSqjpm69/Ming-Kitchen-Dashboard?node-id=1%3A5&viewport=196%2C289%2C0.6938835382461548&scaling=scale-down).
 ## Getting Started
 
 This project is a starting point for a Flutter application.
