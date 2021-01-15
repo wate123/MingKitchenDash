@@ -3,8 +3,11 @@ import 'package:ming_dash/cost/costFormWidget.dart';
 import 'home/salesStatsWidget.dart';
 import 'home/salesChartsWidget.dart';
 import 'cost/costStatsWidget.dart';
+import './client_provider.dart';
 
+final graphqlEndPoint = "http://localhost:8080/query";
 void main() {
+  //TODO Add AUth link
   runApp(MyApp());
 }
 
@@ -12,26 +15,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '餐馆统计',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Main(title: 'Ming\'s Kitchen'),
-    );
+    return ClientProvider(
+        uri: graphqlEndPoint,
+        child: MaterialApp(
+          title: '餐馆统计',
+          theme: ThemeData(
+            // This is the theme of your application.
+            //
+            // Try running your application with "flutter run". You'll see the
+            // application has a blue toolbar. Then, without quitting the app, try
+            // changing the primarySwatch below to Colors.green and then invoke
+            // "hot reload" (press "r" in the console where you ran "flutter run",
+            // or simply save your changes to "hot reload" in a Flutter IDE).
+            // Notice that the counter didn't reset back to zero; the application
+            // is not restarted.
+            primarySwatch: Colors.blue,
+            // This makes the visual density adapt to the platform that you run
+            // the app on. For desktop platforms, the controls will be smaller and
+            // closer together (more dense) than on mobile platforms.
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: Main(title: 'Ming\'s Kitchen'),
+        ));
   }
 }
 
@@ -55,18 +60,30 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   int _selectedIndex = 0;
+  // Query(
+  //   options: QueryOptions(documentNode: salesStatsQuery)
+  // )
+  // Query(
+  //       options: QueryOptions(documentNode: gql(salesStatsQuery)),
+  //       builder: (QueryResult result,
+  //           dynamic Function(FetchMoreOptions) fetchMore,
+  //           Future<QueryResult> Function() refetch) {
+  //         if (result.hasException) {
+  //           return Text(result.exception.toString());
+  //         }
+
+  //         if (result.loading) {
+  //           return Text('Loading');
+  //         }
+  //         print(result.data)
+  //         return List;
+  //       },
+  //     )
+
   static List<dynamic> _pages = <dynamic>[
     [
-      SalesStatsWidget(
-        data: {'todaySale': 3},
-      ),
-      SalesChartsWidget(data: [
-        {'month': 1, 'uber': 1600.8, 'total_amount': 16206.2500000001},
-        {'month': 2, 'uber': 1394.43, 'total_amount': 15111.8200000001},
-        {'month': 3, 'uber': 448.76, 'total_amount': 5130.43},
-        {'month': 5, 'uber': 5493.07, 'total_amount': 19304.08},
-        {'month': 6, 'uber': 1220.93, 'total_amount': 5940.84}
-      ]),
+      SalesStatsWidget(),
+      SalesChartsWidget(),
     ],
     [
       CostStatsWidget(data: {'todaySale': 5}),
